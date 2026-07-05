@@ -15,9 +15,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-
       - name: Install cowsay
         run: sudo apt-get install -y cowsay
 
@@ -27,13 +24,21 @@ jobs:
       - name: Verify output contains DRAGON
         run: grep -i "DRAGON" dragon.txt
 
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dragon-artifact
+          path: dragon.txt
+
   deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dragon-artifact
+          
       - name: Show generated output
         run: cat dragon.txt
 
