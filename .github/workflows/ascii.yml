@@ -25,7 +25,7 @@ jobs:
         run: grep -i "DRAGON" dragon.txt
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dragon-artifact
           path: dragon.txt
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: dragon-artifact
           
