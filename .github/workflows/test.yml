@@ -6,12 +6,14 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: Checkout
-          uses: actions/checkout@v7    
-        - name: Welcome
-          run: echo "First GA Job"
+          uses: actions/checkout@v7
 
-        - name: List files
-          run: ls
+        - name: Multiple commands
+          run: |
+            echo "First GA Job"
+            ls -ltra
+            cat README.md
+            
+        - name: Generate ASCII art work
+          run: cowsay -f dragon "Hello from GitHub Actions!" > dragon.txt
 
-        - name: read file
-          run: cat README.md
