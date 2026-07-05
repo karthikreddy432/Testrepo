@@ -1,0 +1,15 @@
+name: first workflow
+on: push
+
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Welcome
+          run: echo "First GA Job"
+
+        - name: List files
+          run: ls
+
+        - name: read file
+          run: cat README.md
