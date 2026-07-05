@@ -1,0 +1,19 @@
+name: first workflow
+on: push
+
+jobs:
+    ascii job:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v7
+
+        - name: Multiple commands
+          run: |
+            echo "First GA Job"
+            ls -ltra
+            cat README.md
+            
+        - name: Generate ASCII art work
+          run: cowsay -f dragon "Hello from GitHub Actions!" > dragon.txt
+
