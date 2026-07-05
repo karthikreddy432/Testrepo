@@ -2,18 +2,24 @@ name: first workflow
 on: push
 
 jobs:
-    ascii job:
-        runs-on: ubuntu-latest
-        steps:
-        - name: Checkout
-          uses: actions/checkout@v7
+  ascii-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7
 
-        - name: Multiple commands
-          run: |
-            echo "First GA Job"
-            ls -ltra
-            cat README.md
-            
-        - name: Generate ASCII art work
-          run: cowsay -f dragon "Hello from GitHub Actions!" > dragon.txt
+    - name: Install cowsay
+      run: sudo apt-get install -y cowsay
+           
+    - name: Execute cowsay command
+      run: cowsay -f dragon "Run for cover I'm a DRAGON....RAWR!" >> dragon.txt
+
+    - name: Test file exists
+      run: grep -i "DRAGON" dragon.txt
+
+    - name: Read the file
+      run: cat dragon.txt
+
+    - name: List repo files
+      run: ls -ltra
 
