@@ -1,5 +1,5 @@
 name: first workflow
-on: push
+on: workflow_dispatch
 
 jobs:
     job1:
@@ -13,7 +13,6 @@ jobs:
             echo "First GA Job"
             ls -ltra
             cat README.md
-            
-        - name: Generate ASCII art work
-          run: cowsay -f dragon "Hello from GitHub Actions!" > dragon.txt
+
+       
 
