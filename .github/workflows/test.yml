@@ -5,6 +5,8 @@ jobs:
     job1:
         runs-on: ubuntu-latest
         steps:
+        - name: Checkout
+          uses: actions/checkout@v7    
         - name: Welcome
           run: echo "First GA Job"
 
